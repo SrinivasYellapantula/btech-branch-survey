@@ -1,14 +1,14 @@
 const SHEET_ID = "";
 const SHEET_NAME = "Responses";
 const NOTIFY_EMAIL = "";
-const AUTO_CREATE_SPREADSHEET_NAME = "B.Tech Branch Fit Survey Responses";
+const AUTO_CREATE_SPREADSHEET_NAME = "Course Fit Survey Responses";
 
 function doGet() {
   const sheet = getSheet_();
   return ContentService
     .createTextOutput(JSON.stringify({
       ok: true,
-      message: "B.Tech survey response endpoint is running.",
+      message: "Course Fit Survey response endpoint is running.",
       spreadsheetUrl: sheet.getParent().getUrl()
     }))
     .setMimeType(ContentService.MimeType.JSON);
@@ -23,6 +23,8 @@ function doPost(e) {
     const result = payload.result || {};
     const readiness = result.readiness || {};
     const ece = result.ece || {};
+    const mechanical = result.mechanical || {};
+    const pharmacy = result.pharmacy || {};
 
     const row = [
       new Date(),
@@ -31,10 +33,15 @@ function doPost(e) {
       result.recommendation || "",
       readiness.level || "",
       readiness.total || "",
+      readiness.maxTotal || "",
       readiness.fundamentals || "",
       readiness.habits || "",
       ece.label || "",
       ece.detail || "",
+      mechanical.label || "",
+      mechanical.detail || "",
+      pharmacy.label || "",
+      pharmacy.detail || "",
       branchSummary_(result.branchScores || []),
       answerSummary_(payload.answers || {}),
       JSON.stringify(payload)
@@ -45,17 +52,19 @@ function doPost(e) {
     if (NOTIFY_EMAIL) {
       MailApp.sendEmail({
         to: NOTIFY_EMAIL,
-        subject: "New B.Tech Branch Fit Survey Response",
+        subject: "New Course Fit Survey Response",
         body: [
           "A new survey response was submitted.",
           "",
           "Student: " + (payload.studentName || "Not provided"),
           "Contact: " + (payload.studentContact || "Not provided"),
           "Recommendation: " + (result.recommendation || ""),
-          "Readiness: " + (readiness.level || "") + " (" + (readiness.total || "") + "/42)",
+          "Readiness: " + (readiness.level || "") + " (" + (readiness.total || "") + "/" + (readiness.maxTotal || "") + ")",
           "ECE verdict: " + (ece.label || ""),
+          "Mechanical verdict: " + (mechanical.label || ""),
+          "Pharmacy verdict: " + (pharmacy.label || ""),
           "",
-          "Branch scores:",
+          "Course/branch scores:",
           branchSummary_(result.branchScores || []),
           "",
           "Answers:",
@@ -98,22 +107,33 @@ function getOrCreateSpreadsheet_() {
 }
 
 function ensureHeaders_(sheet) {
-  if (sheet.getLastRow() > 0) return;
-  sheet.appendRow([
+  const headers = [
     "Timestamp",
     "Student Name",
     "Contact",
     "Recommendation",
     "Readiness Level",
     "Readiness Score",
+    "Readiness Max",
     "Fundamentals Score",
     "Study Habits Score",
     "ECE Verdict",
     "ECE Detail",
-    "Branch Scores",
+    "Mechanical Verdict",
+    "Mechanical Detail",
+    "Pharmacy Verdict",
+    "Pharmacy Detail",
+    "Course/Branch Scores",
     "Answers",
     "Raw JSON"
-  ]);
+  ];
+
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(headers);
+    return;
+  }
+
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
 }
 
 function branchSummary_(branches) {

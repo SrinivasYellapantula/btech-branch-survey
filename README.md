@@ -1,6 +1,6 @@
-# B.Tech Branch Fit Survey
+# Course Fit Survey
 
-This folder contains a mobile-friendly survey page that scores a student and recommends a safer B.Tech branch fit. It also gives an ECE-specific risk verdict.
+This folder contains a mobile-friendly survey page that scores a student and recommends a safer course or branch fit. It compares ECE, Mechanical, B.Pharmacy/M.Pharmacy, and nearby backup options using subject comfort, interest, study habits, and exam-readiness.
 
 ## Files
 
@@ -34,7 +34,7 @@ const CONFIG = {
 };
 ```
 
-After that, every submitted survey will append a row to a Google Sheet named `B.Tech Branch Fit Survey Responses` in your Google Drive. The student still sees feedback immediately on the phone.
+After that, every submitted survey will append a row to a Google Sheet named `Course Fit Survey Responses` in your Google Drive. The student still sees feedback immediately on the phone.
 
 To confirm the endpoint is working, open the Web App URL in a browser. It will show a JSON response that includes the spreadsheet URL.
 

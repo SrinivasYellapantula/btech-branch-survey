@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>B.Tech Branch Fit Survey</title>
+  <title>Course Fit Survey</title>
   <style>
     :root {
       --bg: #f5f7f4;
@@ -535,10 +535,10 @@
     <section class="top" aria-labelledby="page-title">
       <div class="brandline">
         <div class="brand">
-          <h1 id="page-title">B.Tech Branch Fit Survey</h1>
-          <p class="subtitle">A branch recommendation based on subject comfort, study habits, practical interest, and ECE readiness.</p>
+          <h1 id="page-title">Course Fit Survey</h1>
+          <p class="subtitle">A practical fit check for ECE, Mechanical, B.Pharmacy, and nearby options based on your interest, subject comfort, and exam-readiness.</p>
         </div>
-        <span class="pill">20 questions</span>
+        <span class="pill">24 questions</span>
       </div>
     </section>
 
@@ -605,57 +605,58 @@
       { id: 2, type: "scale", text: "Trigonometry, calculus, graphs, formulas" },
       { id: 3, type: "scale", text: "Physics numerical problems" },
       { id: 4, type: "scale", text: "Electricity, magnetism, circuits" },
-      { id: 5, type: "scale", text: "Logic puzzles, patterns, step-by-step thinking" },
-      { id: 6, type: "scale", text: "Coding or learning programming" },
-      { id: 7, type: "scale", text: "Drawing, visualizing 3D shapes, maps, designs" },
-      { id: 8, type: "scale", text: "Repairing/building things with hands, tools, kits" },
-      { id: 9, type: "scale", text: "Chemistry, materials, reactions, processes" },
-      { id: 10, type: "scale", text: "Biology, environment, health-related topics" },
-      { id: 11, type: "scale", text: "Reading theory and writing clear exam answers" },
-      { id: 12, type: "scale", text: "Studying 1-2 hours daily without pressure" },
-      { id: 13, type: "scale", text: "Asking doubts and taking help before exams" },
-      { id: 14, type: "scale", text: "Doing lab records, practicals, assignments on time" },
-      {
-        id: 15,
-        type: "choice",
-        text: "Which topic sounds most interesting?",
-        options: [
-          { value: "A", label: "Mobile networks, electronics, chips, circuits" },
-          { value: "B", label: "Apps, websites, software, AI tools" },
-          { value: "C", label: "Machines, vehicles, engines, manufacturing" },
-          { value: "D", label: "Buildings, roads, bridges, construction" },
-          { value: "E", label: "Chemicals, materials, food/pharma processes" },
-          { value: "F", label: "Biology, environment, healthcare technology" }
-        ]
-      },
-      {
-        id: 16,
-        type: "choice",
-        text: "Which work environment suits him more?",
-        options: [
-          { value: "A", label: "Computer/laptop most of the day" },
-          { value: "B", label: "Electronics lab or embedded systems lab" },
-          { value: "C", label: "Workshop, machine shop, factory floor" },
-          { value: "D", label: "Construction site plus design office" },
-          { value: "E", label: "Chemical/quality/process lab" },
-          { value: "F", label: "Hospital/environment/agri/biotech lab" }
-        ]
-      },
+      { id: 5, type: "scale", text: "Mechanics, force, motion, machines, and engines" },
+      { id: 6, type: "scale", text: "Engineering drawing, CAD, and visualizing 3D shapes" },
+      { id: 7, type: "scale", text: "Workshop tasks, tools, machines, and hands-on building" },
+      { id: 8, type: "scale", text: "Electronics projects, sensors, Arduino, chips, or embedded devices" },
+      { id: 9, type: "scale", text: "Logic puzzles, coding, and step-by-step problem solving" },
+      { id: 10, type: "scale", text: "Chemistry, reactions, formulas, materials, and lab observations" },
+      { id: 11, type: "scale", text: "Biology, anatomy, health, medicines, or how the body works" },
+      { id: 12, type: "scale", text: "Memorizing and understanding theory-heavy subjects" },
+      { id: 13, type: "scale", text: "Doing lab records, practicals, assignments, and viva preparation on time" },
+      { id: 14, type: "scale", text: "Reading textbooks and writing clear exam answers" },
+      { id: 15, type: "scale", text: "Studying 1-2 hours daily without someone forcing you" },
+      { id: 16, type: "scale", text: "Asking doubts early and taking help before exams" },
       {
         id: 17,
         type: "choice",
-        text: "Which weekend project would he actually try?",
+        text: "If no one pressured you, which path would you honestly pick first?",
         options: [
-          { value: "A", label: "Build a simple circuit or Arduino project" },
-          { value: "B", label: "Make a small website/app/program" },
-          { value: "C", label: "Dismantle/repair a device or machine" },
-          { value: "D", label: "Create a house plan/model or survey layout" },
-          { value: "E", label: "Make/test a chemical/material/food process" },
-          { value: "F", label: "Biology/environment-related experiment" }
+          { value: "A", label: "ECE" },
+          { value: "B", label: "Mechanical" },
+          { value: "C", label: "B.Pharmacy, then maybe M.Pharmacy" },
+          { value: "D", label: "CSE/IT" },
+          { value: "E", label: "I am not sure yet" }
         ]
       },
       {
         id: 18,
+        type: "choice",
+        text: "Which daily learning environment sounds most realistic for you?",
+        options: [
+          { value: "A", label: "Computer/laptop most of the day" },
+          { value: "B", label: "Electronics lab or embedded systems lab" },
+          { value: "C", label: "Workshop, machine shop, factory floor" },
+          { value: "D", label: "Pharmacy, chemistry, biology, or formulation lab" },
+          { value: "E", label: "Construction site plus design office" },
+          { value: "F", label: "I do not know yet" }
+        ]
+      },
+      {
+        id: 19,
+        type: "choice",
+        text: "Which weekend project would you actually try by yourself?",
+        options: [
+          { value: "A", label: "Build a simple circuit or Arduino project" },
+          { value: "B", label: "Make a small website/app/program" },
+          { value: "C", label: "Dismantle/repair a device or machine" },
+          { value: "D", label: "Make/test a chemical, medicine, or formulation experiment" },
+          { value: "E", label: "Create a house plan/model or survey layout" },
+          { value: "F", label: "None of these without pressure" }
+        ]
+      },
+      {
+        id: 20,
         type: "choice",
         text: "Which subject caused the least fear in intermediate?",
         options: [
@@ -668,7 +669,7 @@
         ]
       },
       {
-        id: 19,
+        id: 21,
         type: "choice",
         text: "Which subject was hardest?",
         options: [
@@ -681,15 +682,39 @@
         ]
       },
       {
-        id: 20,
+        id: 22,
         type: "choice",
-        text: "Why does he want ECE?",
+        text: "Why do you want ECE?",
         options: [
           { value: "A", label: "Genuine interest in electronics/circuits/communication" },
-          { value: "B", label: "Good jobs, but I do not know the subjects well" },
+          { value: "B", label: "Good jobs, but I do not know the subjects deeply yet" },
           { value: "C", label: "Family/friends suggested it" },
           { value: "D", label: "I did not get CSE/IT" },
           { value: "E", label: "I am still confused" }
+        ]
+      },
+      {
+        id: 23,
+        type: "choice",
+        text: "Why would you choose Mechanical?",
+        options: [
+          { value: "A", label: "Genuine interest in machines, vehicles, design, or manufacturing" },
+          { value: "B", label: "My mother prefers Mechanical" },
+          { value: "C", label: "It feels like a traditional safe branch" },
+          { value: "D", label: "I think I can pass it better than ECE" },
+          { value: "E", label: "I am not interested in Mechanical" }
+        ]
+      },
+      {
+        id: 24,
+        type: "choice",
+        text: "Why would you choose B.Pharmacy or M.Pharmacy?",
+        options: [
+          { value: "A", label: "Genuine interest in medicines, chemistry, biology, or healthcare" },
+          { value: "B", label: "My father prefers Pharmacy because of future stability" },
+          { value: "C", label: "I want to avoid Maths and Physics" },
+          { value: "D", label: "I like lab work and can handle theory-heavy subjects" },
+          { value: "E", label: "I am not interested in Pharmacy" }
         ]
       }
     ];
@@ -698,75 +723,87 @@
 
     const branchRules = {
       "CSE/IT": {
-        weights: { 1: 1, 2: 0.8, 5: 2, 6: 2, 11: 0.8, 12: 1.5, 13: 1, 14: 1 },
+        weights: { 1: 1, 2: 0.8, 9: 2.2, 12: 0.8, 13: 0.8, 14: 0.8, 15: 1.5, 16: 1 },
         interest: {
-          15: { B: 3 },
-          16: { A: 3 },
-          17: { B: 3 },
-          18: { A: 1, D: 2, F: 0.5 },
-          19: { A: -2, D: -5 },
-          20: { D: 1 }
+          17: { D: 4 },
+          18: { A: 3 },
+          19: { B: 3 },
+          20: { A: 1, D: 2, F: 0.5 },
+          21: { A: -2, D: -5 },
+          22: { D: 1 }
         }
       },
       "ECE": {
-        weights: { 1: 1, 2: 2, 3: 1.5, 4: 2, 5: 0.8, 8: 1, 12: 1.5, 13: 1, 14: 1.2 },
+        weights: { 1: 1, 2: 2, 3: 1.5, 4: 2.2, 8: 1.5, 9: 0.8, 13: 1, 14: 1, 15: 1.5, 16: 1 },
         interest: {
-          15: { A: 3 },
-          16: { B: 3 },
-          17: { A: 3 },
-          18: { A: 1, B: 1, D: 0.5, F: 0.5 },
-          19: { A: -5, B: -4 },
-          20: { A: 5, B: 1, C: -1, D: -1, E: -1 }
+          17: { A: 4 },
+          18: { B: 3 },
+          19: { A: 3 },
+          20: { A: 1, B: 1, D: 0.5, F: 0.5 },
+          21: { A: -5, B: -4 },
+          22: { A: 5, B: 1, C: -1, D: -1, E: -1 }
         }
       },
       "EEE/Electrical": {
-        weights: { 1: 1, 2: 2, 3: 2, 4: 2, 8: 1, 12: 1.5, 13: 1, 14: 1 },
+        weights: { 1: 1, 2: 2, 3: 2, 4: 2, 8: 1, 13: 1, 14: 0.8, 15: 1.5, 16: 1 },
         interest: {
-          15: { A: 2 },
-          16: { B: 2 },
           17: { A: 2 },
-          18: { A: 1, B: 1 },
-          19: { A: -5, B: -5 }
+          18: { B: 2 },
+          19: { A: 2 },
+          20: { A: 1, B: 1 },
+          21: { A: -5, B: -5 }
         }
       },
       "Mechanical": {
-        weights: { 1: 0.8, 2: 1.2, 3: 2, 7: 1.5, 8: 1.5, 11: 0.6, 12: 1, 14: 1 },
+        weights: { 1: 0.8, 2: 1.2, 3: 1.8, 5: 2.2, 6: 1.6, 7: 1.6, 13: 1, 14: 0.8, 15: 1.2, 16: 0.8 },
         interest: {
-          15: { C: 3 },
-          16: { C: 3 },
-          17: { C: 3 },
-          18: { A: 0.5, B: 1 },
-          19: { A: -3, B: -5 }
+          17: { B: 4 },
+          18: { C: 3 },
+          19: { C: 3 },
+          20: { A: 0.5, B: 1 },
+          21: { A: -3, B: -5 },
+          23: { A: 5, B: -1, C: 0, D: 1, E: -4 }
+        }
+      },
+      "B.Pharmacy/M.Pharmacy": {
+        weights: { 1: 0.4, 2: 0.3, 3: 0.5, 10: 2.4, 11: 2, 12: 1.6, 13: 1.5, 14: 1.2, 15: 1.2, 16: 0.8 },
+        interest: {
+          17: { C: 4 },
+          18: { D: 3 },
+          19: { D: 3 },
+          20: { C: 2, E: 2, A: 0.5, B: 0.5 },
+          21: { C: -5, E: -4 },
+          24: { A: 5, B: 1, C: -4, D: 3, E: -5 }
         }
       },
       "Civil": {
-        weights: { 1: 0.8, 2: 1, 3: 1.5, 7: 2, 8: 1, 11: 1, 12: 1, 14: 1 },
+        weights: { 1: 0.8, 2: 1, 3: 1.4, 5: 1, 6: 2, 7: 1, 13: 1, 14: 1, 15: 1 },
         interest: {
-          15: { D: 3 },
-          16: { D: 3 },
-          17: { D: 3 },
-          18: { A: 0.5, B: 1 },
-          19: { A: -3, B: -4 }
+          18: { E: 3 },
+          19: { E: 3 },
+          20: { A: 0.5, B: 1 },
+          21: { A: -3, B: -4 }
         }
       },
       "Chemical/Food Tech": {
-        weights: { 1: 0.8, 2: 1, 3: 0.8, 9: 2.5, 11: 1, 12: 1, 14: 1.5 },
+        weights: { 1: 0.8, 2: 1, 3: 0.8, 10: 2.5, 12: 1, 13: 1.5, 14: 1, 15: 1 },
         interest: {
-          15: { E: 3 },
-          16: { E: 3 },
-          17: { E: 3 },
-          18: { C: 2, A: 0.5 },
-          19: { A: -2, C: -5 }
+          18: { D: 2 },
+          19: { D: 2 },
+          20: { C: 2, A: 0.5 },
+          21: { A: -2, C: -5 },
+          24: { A: 1, D: 1 }
         }
       },
       "Biotech/Biomedical/Environmental": {
-        weights: { 1: 0.5, 2: 0.5, 3: 0.5, 9: 1.5, 10: 2.5, 11: 1.5, 12: 1, 14: 1 },
+        weights: { 1: 0.5, 2: 0.5, 3: 0.5, 10: 1.5, 11: 2.5, 12: 1.5, 13: 1, 14: 1, 15: 1 },
         interest: {
-          15: { F: 3 },
-          16: { F: 3 },
-          17: { F: 3 },
-          18: { E: 2, C: 1 },
-          19: { C: -2, E: -5 }
+          17: { C: 1 },
+          18: { D: 2 },
+          19: { D: 2 },
+          20: { E: 2, C: 1 },
+          21: { C: -2, E: -5 },
+          24: { A: 2, D: 1 }
         }
       }
     };
@@ -894,37 +931,47 @@
         if (low(3) || low(4)) blockers.push("physics/electrical foundation is weak");
       }
       if (name === "CSE/IT") {
-        if (low(5)) blockers.push("logic/problem-solving comfort is weak");
-        if (low(6)) blockers.push("coding interest is weak");
+        if (low(9)) blockers.push("logic/coding comfort is weak");
       }
       if (name === "Mechanical") {
         if (low(3)) blockers.push("physics numericals are weak");
-        if (low(7)) blockers.push("visualization/drawing comfort is weak");
+        if (low(5)) blockers.push("mechanics/machines foundation is weak");
+        if (low(6)) blockers.push("drawing/spatial comfort is weak");
+        if (answers[23] === "B") blockers.push("Mechanical is mainly parent-driven, not interest-driven");
+      }
+      if (name === "B.Pharmacy/M.Pharmacy") {
+        if (low(10)) blockers.push("chemistry comfort is weak");
+        if (low(11)) blockers.push("biology/health interest is weak");
+        if (low(12)) blockers.push("theory-heavy memorization is weak");
+        if (answers[24] === "B") blockers.push("Pharmacy is mainly parent-driven, not interest-driven");
+        if (answers[24] === "C") blockers.push("Pharmacy is being considered mainly to avoid Maths/Physics");
       }
       if (name === "Civil") {
-        if (low(7)) blockers.push("drawing/spatial comfort is weak");
+        if (low(6)) blockers.push("drawing/spatial comfort is weak");
         if (low(3)) blockers.push("mechanics/physics base is weak");
       }
       if (name === "Chemical/Food Tech") {
-        if (low(9)) blockers.push("chemistry interest is weak");
+        if (low(10)) blockers.push("chemistry interest is weak");
       }
       if (name === "Biotech/Biomedical/Environmental") {
-        if (low(10)) blockers.push("biology/environment interest is weak");
+        if (low(11)) blockers.push("biology/environment interest is weak");
       }
       return blockers;
     }
 
     function readiness(answers) {
-      const fundamentals = [1, 2, 3, 4].reduce((sum, id) => sum + qScore(answers, id), 0);
-      const habits = [12, 13, 14].reduce((sum, id) => sum + qScore(answers, id), 0);
-      const total = Array.from({ length: 14 }, (_, index) => index + 1)
+      const scaleIds = questions.filter((question) => question.type === "scale").map((question) => question.id);
+      const maxTotal = scaleIds.length * 3;
+      const fundamentals = [1, 2, 3, 4, 5, 10, 11].reduce((sum, id) => sum + qScore(answers, id), 0);
+      const habits = [13, 14, 15, 16].reduce((sum, id) => sum + qScore(answers, id), 0);
+      const total = scaleIds
         .reduce((sum, id) => sum + qScore(answers, id), 0);
 
       let level = "Safe";
-      if (total < 18 || habits < 4) level = "Risky";
-      else if (total < 28 || habits < 6 || fundamentals < 7) level = "Manageable";
+      if (total < 22 || habits < 5) level = "Risky";
+      else if (total < 33 || habits < 7) level = "Manageable";
 
-      return { fundamentals, habits, total, level };
+      return { fundamentals, habits, total, maxTotal, level };
     }
 
     function eceVerdict(answers, branchScores) {
@@ -932,19 +979,19 @@
       const math = qScore(answers, 2);
       const physics = qScore(answers, 3);
       const circuits = qScore(answers, 4);
-      const motivation = answers[20];
+      const motivation = answers[22];
 
       if (ece.percent >= 72 && math >= 2 && physics >= 2 && circuits >= 2 && motivation === "A") {
         return {
           label: "ECE is possible",
-          detail: "The answers show enough interest and foundation to consider ECE, provided he studies consistently."
+          detail: "Your answers show enough interest and foundation to consider ECE, provided you study consistently."
         };
       }
 
       if (math <= 1 || physics <= 1 || circuits <= 1) {
         return {
           label: "ECE is risky",
-          detail: "ECE will repeatedly use maths, physics numericals, circuits, signals, and communication theory. He should choose it only with a serious bridge plan."
+          detail: "ECE will repeatedly use maths, physics numericals, circuits, signals, and communication theory. Choose it only with a serious bridge plan."
         };
       }
 
@@ -954,26 +1001,112 @@
       };
     }
 
+    function mechanicalVerdict(answers, branchScores) {
+      const mechanical = branchScores.find((branch) => branch.name === "Mechanical");
+      const physics = qScore(answers, 3);
+      const mechanics = qScore(answers, 5);
+      const drawing = qScore(answers, 6);
+      const motivation = answers[23];
+
+      if (mechanical.percent >= 72 && physics >= 2 && mechanics >= 2 && drawing >= 2 && motivation === "A") {
+        return {
+          label: "Mechanical is possible",
+          detail: "Mechanical can fit if you genuinely like machines, mechanics, design, workshop work, and drawing-based subjects."
+        };
+      }
+
+      if (physics <= 1 || mechanics <= 1 || drawing <= 1) {
+        return {
+          label: "Mechanical is risky",
+          detail: "Mechanical is not just a fallback; exams depend on physics, mechanics, drawing/CAD, workshop, and manufacturing subjects."
+        };
+      }
+
+      if (motivation === "B") {
+        return {
+          label: "Mechanical is parent-driven",
+          detail: "Your mother preferring Mechanical is worth respecting, but it should not be the main reason unless your own interest is also present."
+        };
+      }
+
+      return {
+        label: "Mechanical is manageable with support",
+        detail: "Mechanical may be manageable if you build comfort in mechanics, drawing, workshop practice, and regular problem solving."
+      };
+    }
+
+    function pharmacyVerdict(answers, branchScores) {
+      const pharmacy = branchScores.find((branch) => branch.name === "B.Pharmacy/M.Pharmacy");
+      const chemistry = qScore(answers, 10);
+      const biology = qScore(answers, 11);
+      const theory = qScore(answers, 12);
+      const labs = qScore(answers, 13);
+      const motivation = answers[24];
+
+      if (pharmacy.percent >= 72 && chemistry >= 2 && biology >= 2 && theory >= 2 && labs >= 2 && motivation === "A") {
+        return {
+          label: "Pharmacy is possible",
+          detail: "B.Pharmacy can fit if you genuinely like medicines, chemistry, biology, healthcare, lab work, and theory-heavy exams."
+        };
+      }
+
+      if (chemistry <= 1 || biology <= 1 || theory <= 1 || labs <= 1) {
+        return {
+          label: "Pharmacy is risky",
+          detail: "Pharmacy is not an easy escape from engineering; it needs chemistry, biology/health science, lab discipline, memorization, and careful theory preparation."
+        };
+      }
+
+      if (motivation === "B") {
+        return {
+          label: "Pharmacy is parent-driven",
+          detail: "Your father preferring Pharmacy for future stability is a valid concern, but you still need real comfort with chemistry, biology, labs, and long theory subjects."
+        };
+      }
+
+      if (motivation === "C") {
+        return {
+          label: "Pharmacy is a weak fallback reason",
+          detail: "Choosing Pharmacy mainly to avoid Maths and Physics is risky because the course has its own difficult science workload."
+        };
+      }
+
+      return {
+        label: "Pharmacy is manageable with support",
+        detail: "Pharmacy may be manageable if you can handle chemistry, biology/health topics, lab records, and regular memorization."
+      };
+    }
+
     function buildNotes(answers, branchScores, ready) {
       const notes = [];
       const top = branchScores[0];
       const ece = branchScores.find((branch) => branch.name === "ECE");
+      const mechanical = branchScores.find((branch) => branch.name === "Mechanical");
+      const pharmacy = branchScores.find((branch) => branch.name === "B.Pharmacy/M.Pharmacy");
 
-      notes.push({ type: "good", text: `Best-fit branch from this survey: ${top.name} (${top.level}, ${top.percent}%).` });
+      notes.push({ type: "good", text: `Best-fit course/branch from this survey: ${top.name} (${top.level}, ${top.percent}%).` });
 
       if (ready.level === "Risky") {
-        notes.push({ type: "warning", text: "Overall B.Tech passing risk is high unless daily study habits improve before joining." });
+        notes.push({ type: "warning", text: "Overall degree-completion risk is high unless daily study habits improve before joining." });
       } else if (ready.level === "Manageable") {
-        notes.push({ type: "warning", text: "B.Tech is manageable, but the first year needs a planned bridge in maths, physics, and study routine." });
+        notes.push({ type: "warning", text: "A degree is manageable, but the first year needs a planned bridge in weak subjects and study routine." });
       } else {
-        notes.push({ type: "good", text: "The basic readiness score is strong enough for a regular B.Tech workload." });
+        notes.push({ type: "good", text: "The basic readiness score is strong enough for a regular degree workload." });
       }
 
       getBranchBlockers("ECE", answers).forEach((blocker) => {
         notes.push({ type: "warning", text: `ECE caution: ${blocker}.` });
       });
 
-      if (answers[20] && answers[20] !== "A") {
+      getBranchBlockers("Mechanical", answers).forEach((blocker) => {
+        notes.push({ type: "warning", text: `Mechanical caution: ${blocker}.` });
+      });
+
+      getBranchBlockers("B.Pharmacy/M.Pharmacy", answers).forEach((blocker) => {
+        notes.push({ type: "warning", text: `Pharmacy caution: ${blocker}.` });
+      });
+
+      if (answers[22] && answers[22] !== "A") {
         notes.push({ type: "warning", text: "ECE motivation is not strongly subject-driven, so check the curriculum before finalizing it." });
       }
 
@@ -981,8 +1114,20 @@
         notes.push({ type: "warning", text: "ECE is below the manageable range in this scoring model." });
       }
 
-      if (qScore(answers, 6) >= 2 && qScore(answers, 5) >= 2) {
-        notes.push({ type: "good", text: "Logic and coding answers are decent; CSE/IT can be considered if he is ready to practice programming." });
+      if (mechanical && mechanical.percent < 58 && answers[23] !== "E") {
+        notes.push({ type: "warning", text: "Mechanical is below the manageable range in this scoring model." });
+      }
+
+      if (pharmacy && pharmacy.percent < 58 && answers[24] !== "E") {
+        notes.push({ type: "warning", text: "B.Pharmacy/M.Pharmacy is below the manageable range in this scoring model." });
+      }
+
+      if (answers[23] === "B" || answers[24] === "B") {
+        notes.push({ type: "warning", text: "Parent preference should be treated as advice, not the final deciding factor. The final choice must match your interest and ability to clear exams." });
+      }
+
+      if (qScore(answers, 9) >= 2) {
+        notes.push({ type: "good", text: "Logic and coding answers are decent; CSE/IT can be considered if you are ready to practice programming." });
       }
 
       return notes;
@@ -996,11 +1141,13 @@
       const ready = readiness(answers);
       const branchScores = calculateBranchScores(answers);
       const ece = eceVerdict(answers, branchScores);
+      const mechanical = mechanicalVerdict(answers, branchScores);
+      const pharmacy = pharmacyVerdict(answers, branchScores);
       const notes = buildNotes(answers, branchScores, ready);
       const top = branchScores[0];
       const second = branchScores[1];
       const recommendation = ready.level === "Risky"
-        ? "Bridge preparation first, then choose the highest-fit B.Tech branch"
+        ? "Bridge preparation first, then choose the highest-fit course"
         : top.name;
 
       return {
@@ -1008,6 +1155,8 @@
         readiness: ready,
         branchScores,
         ece,
+        mechanical,
+        pharmacy,
         notes,
         recommendation,
         top,
@@ -1033,26 +1182,35 @@
             <h2>${result.recommendation}</h2>
             <span class="badge ${safeClass(result.readiness.level)}">${result.readiness.level}</span>
           </div>
-          <p class="small">${result.ece.label}: ${result.ece.detail}</p>
+          <p class="small">This result is a guidance tool, not a forced answer. The safer choice is the one you can stay interested in and clear exams for.</p>
         </div>
 
         <div class="result-grid">
           <div class="metric">
             <strong>${result.top.name}</strong>
-            <span>Top branch fit, ${result.top.percent}%</span>
+            <span>Top fit, ${result.top.percent}%</span>
           </div>
           <div class="metric">
             <strong>${result.second.name}</strong>
             <span>Second option, ${result.second.percent}%</span>
           </div>
           <div class="metric">
-            <strong>${result.readiness.total}/42</strong>
+            <strong>${result.readiness.total}/${result.readiness.maxTotal}</strong>
             <span>Core readiness score</span>
           </div>
         </div>
 
         <div>
-          <h3>Branch Scores</h3>
+          <h3>Family Decision Check</h3>
+          <ul class="notes">
+            <li class="${result.ece.label.includes("risky") ? "warning" : "good"}"><strong>${result.ece.label}:</strong> ${result.ece.detail}</li>
+            <li class="${result.mechanical.label.includes("risky") || result.mechanical.label.includes("parent") ? "warning" : "good"}"><strong>${result.mechanical.label}:</strong> ${result.mechanical.detail}</li>
+            <li class="${result.pharmacy.label.includes("risky") || result.pharmacy.label.includes("parent") || result.pharmacy.label.includes("fallback") ? "warning" : "good"}"><strong>${result.pharmacy.label}:</strong> ${result.pharmacy.detail}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Course/Branch Scores</h3>
           <div class="branch-list">${branchesHtml}</div>
         </div>
 
@@ -1074,7 +1232,7 @@
 
       resultEl.classList.add("visible");
       miniResult.classList.remove("hidden");
-      miniResultText.textContent = `${result.recommendation}. ECE verdict: ${result.ece.label}.`;
+      miniResultText.textContent = `${result.recommendation}. ECE: ${result.ece.label}. Mechanical: ${result.mechanical.label}. Pharmacy: ${result.pharmacy.label}.`;
       wireResultActions();
       resultEl.scrollIntoView({ block: "start", behavior: "smooth" });
     }
@@ -1093,14 +1251,14 @@
 
       shareBtn.addEventListener("click", async () => {
         if (navigator.share) {
-          await navigator.share({ title: "B.Tech Branch Fit Survey", text: latestReport });
+          await navigator.share({ title: "Course Fit Survey", text: latestReport });
           return;
         }
         await navigator.clipboard.writeText(latestReport);
         setStatus("Sharing is not available here, so the report was copied.", "ok");
       });
 
-      const subject = encodeURIComponent("B.Tech Branch Fit Survey Result");
+      const subject = encodeURIComponent("Course Fit Survey Result");
       const body = encodeURIComponent(latestReport);
       mailBtn.href = `mailto:${CONFIG.ownerEmail}?subject=${subject}&body=${body}`;
 
@@ -1111,7 +1269,7 @@
         const blob = new Blob([JSON.stringify(latestPayload, null, 2)], { type: "application/json" });
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = "btech-branch-survey-result.json";
+        link.download = "course-fit-survey-result.json";
         link.click();
         URL.revokeObjectURL(link.href);
       });
@@ -1150,17 +1308,21 @@
         .join("\n");
 
       return [
-        "B.Tech Branch Fit Survey Result",
+        "Course Fit Survey Result",
         `Generated: ${new Date(result.generatedAt).toLocaleString()}`,
         `Student: ${name}`,
         `Contact: ${contact}`,
         "",
         `Recommendation: ${result.recommendation}`,
-        `Overall readiness: ${result.readiness.level} (${result.readiness.total}/42)`,
+        `Overall readiness: ${result.readiness.level} (${result.readiness.total}/${result.readiness.maxTotal})`,
         `ECE verdict: ${result.ece.label}`,
         result.ece.detail,
+        `Mechanical verdict: ${result.mechanical.label}`,
+        result.mechanical.detail,
+        `Pharmacy verdict: ${result.pharmacy.label}`,
+        result.pharmacy.detail,
         "",
-        "Branch scores:",
+        "Course/branch scores:",
         branchLines,
         "",
         "Assessment notes:",
