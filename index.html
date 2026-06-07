@@ -1,0 +1,1241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>B.Tech Branch Fit Survey</title>
+  <style>
+    :root {
+      --bg: #f5f7f4;
+      --panel: #ffffff;
+      --ink: #15201e;
+      --muted: #5d6e69;
+      --line: #d8ded7;
+      --soft: #edf2ee;
+      --accent: #0f766e;
+      --accent-strong: #0a4f4a;
+      --gold: #a16207;
+      --red: #b42318;
+      --blue: #2563eb;
+      --shadow: 0 16px 40px rgba(21, 32, 30, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .top {
+      display: grid;
+      gap: 16px;
+      padding: 12px 0 18px;
+    }
+
+    .brandline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: grid;
+      gap: 4px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.05;
+      max-width: 760px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 1rem;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--accent-strong);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .student-panel {
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    label.field {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .field input {
+      min-height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px 12px;
+      color: var(--ink);
+      background: #fbfcfb;
+    }
+
+    .field input:focus {
+      outline: 3px solid rgba(15, 118, 110, 0.18);
+      border-color: var(--accent);
+      background: #fff;
+    }
+
+    .question-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    fieldset.question {
+      margin: 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    fieldset.question.missing {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.08);
+    }
+
+    legend {
+      padding: 0;
+      font-weight: 760;
+      font-size: 1.02rem;
+      color: var(--ink);
+    }
+
+    .question-meta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 8px;
+      background: var(--soft);
+      color: var(--accent-strong);
+      font-weight: 800;
+      font-size: 0.88rem;
+      vertical-align: middle;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .option {
+      min-height: 58px;
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: #fbfcfb;
+      cursor: pointer;
+      transition: border-color 140ms ease, background 140ms ease, box-shadow 140ms ease;
+    }
+
+    .option:hover {
+      border-color: rgba(15, 118, 110, 0.55);
+      background: #f6fbf9;
+    }
+
+    .option input {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--accent);
+    }
+
+    .option span {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .option:has(input:checked) {
+      border-color: var(--accent);
+      background: #eaf7f3;
+      box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+    }
+
+    .sticky {
+      position: sticky;
+      top: 16px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .tracker,
+    .result-mini {
+      padding: 18px;
+    }
+
+    .tracker h2,
+    .result-mini h2 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .meter {
+      height: 10px;
+      border-radius: 999px;
+      background: #dde5df;
+      overflow: hidden;
+    }
+
+    .meter-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--accent);
+      transition: width 180ms ease;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    .submit-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      min-height: 46px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-weight: 760;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      color: inherit;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background: var(--accent-strong);
+    }
+
+    .btn-secondary {
+      background: var(--panel);
+      border-color: var(--line);
+      color: var(--accent-strong);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus {
+      border-color: var(--accent);
+      background: #f6fbf9;
+    }
+
+    .btn:focus {
+      outline: 3px solid rgba(15, 118, 110, 0.18);
+      outline-offset: 2px;
+    }
+
+    .status-text {
+      min-height: 24px;
+      color: var(--red);
+      font-weight: 680;
+      flex: 1 1 280px;
+    }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+    }
+
+    .result.visible {
+      display: grid;
+      gap: 18px;
+    }
+
+    .result-head {
+      display: grid;
+      gap: 8px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .result-title {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 0.86rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .badge.safe {
+      background: var(--accent);
+    }
+
+    .badge.manageable {
+      background: var(--gold);
+    }
+
+    .badge.risky {
+      background: var(--red);
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fbfcfb;
+      min-height: 96px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .branch-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .branch-row {
+      display: grid;
+      grid-template-columns: 150px 1fr 96px;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfb;
+    }
+
+    .branch-name {
+      font-weight: 800;
+    }
+
+    .bar {
+      height: 9px;
+      border-radius: 999px;
+      background: #dde5df;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: var(--blue);
+    }
+
+    .branch-row:nth-child(1) .bar span {
+      background: var(--accent);
+    }
+
+    .branch-row:nth-child(2) .bar span {
+      background: var(--gold);
+    }
+
+    .score {
+      color: var(--muted);
+      text-align: right;
+      font-weight: 760;
+    }
+
+    .notes {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .notes li {
+      border-left: 4px solid var(--line);
+      padding: 8px 10px;
+      background: #fbfcfb;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .notes li.warning {
+      border-color: var(--red);
+    }
+
+    .notes li.good {
+      border-color: var(--accent);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .raw {
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #111918;
+      color: #eff7f4;
+      border-radius: 8px;
+      padding: 14px;
+      overflow-x: auto;
+      max-height: 320px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        padding: 14px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sticky {
+        position: static;
+      }
+
+      .grid-two,
+      .options,
+      .result-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .branch-row {
+        grid-template-columns: 1fr;
+      }
+
+      .score {
+        text-align: left;
+      }
+
+      .submit-row {
+        position: sticky;
+        bottom: 0;
+        padding: 12px 0 0;
+        background: linear-gradient(180deg, rgba(245, 247, 244, 0), var(--bg) 24%);
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="top" aria-labelledby="page-title">
+      <div class="brandline">
+        <div class="brand">
+          <h1 id="page-title">B.Tech Branch Fit Survey</h1>
+          <p class="subtitle">A branch recommendation based on subject comfort, study habits, practical interest, and ECE readiness.</p>
+        </div>
+        <span class="pill">20 questions</span>
+      </div>
+    </section>
+
+    <div class="layout">
+      <section>
+        <form id="surveyForm" novalidate>
+          <div class="student-panel panel">
+            <div class="grid-two">
+              <label class="field">
+                Student name
+                <input id="studentName" name="studentName" autocomplete="name" placeholder="Optional">
+              </label>
+              <label class="field">
+                Contact
+                <input id="studentContact" name="studentContact" autocomplete="tel" placeholder="Optional">
+              </label>
+            </div>
+          </div>
+
+          <div id="questions" class="question-list"></div>
+
+          <div class="submit-row">
+            <p id="formStatus" class="status-text" aria-live="polite"></p>
+            <button class="btn btn-secondary" type="button" id="clearBtn">Clear</button>
+            <button class="btn btn-primary" type="submit">Submit survey</button>
+          </div>
+        </form>
+
+        <section id="result" class="panel result" aria-live="polite"></section>
+      </section>
+
+      <aside class="sticky">
+        <section class="panel tracker">
+          <h2>Progress</h2>
+          <div class="meter" aria-hidden="true"><div id="progressFill" class="meter-fill"></div></div>
+          <p id="progressText" class="small">0 of 20 answered</p>
+        </section>
+
+        <section id="miniResult" class="panel result-mini hidden">
+          <h2>Current result</h2>
+          <p id="miniResultText" class="small"></p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const CONFIG = {
+      responseEndpoint: "",
+      responseMode: "no-cors",
+      ownerEmail: "",
+      ownerWhatsApp: ""
+    };
+
+    const scaleOptions = [
+      { value: "A", label: "I am good at this / I like it" },
+      { value: "B", label: "I can manage with practice" },
+      { value: "C", label: "I struggle, but I am willing to improve" },
+      { value: "D", label: "I dislike it / I avoid it" }
+    ];
+
+    const questions = [
+      { id: 1, type: "scale", text: "Solving algebra, equations, percentages, ratios" },
+      { id: 2, type: "scale", text: "Trigonometry, calculus, graphs, formulas" },
+      { id: 3, type: "scale", text: "Physics numerical problems" },
+      { id: 4, type: "scale", text: "Electricity, magnetism, circuits" },
+      { id: 5, type: "scale", text: "Logic puzzles, patterns, step-by-step thinking" },
+      { id: 6, type: "scale", text: "Coding or learning programming" },
+      { id: 7, type: "scale", text: "Drawing, visualizing 3D shapes, maps, designs" },
+      { id: 8, type: "scale", text: "Repairing/building things with hands, tools, kits" },
+      { id: 9, type: "scale", text: "Chemistry, materials, reactions, processes" },
+      { id: 10, type: "scale", text: "Biology, environment, health-related topics" },
+      { id: 11, type: "scale", text: "Reading theory and writing clear exam answers" },
+      { id: 12, type: "scale", text: "Studying 1-2 hours daily without pressure" },
+      { id: 13, type: "scale", text: "Asking doubts and taking help before exams" },
+      { id: 14, type: "scale", text: "Doing lab records, practicals, assignments on time" },
+      {
+        id: 15,
+        type: "choice",
+        text: "Which topic sounds most interesting?",
+        options: [
+          { value: "A", label: "Mobile networks, electronics, chips, circuits" },
+          { value: "B", label: "Apps, websites, software, AI tools" },
+          { value: "C", label: "Machines, vehicles, engines, manufacturing" },
+          { value: "D", label: "Buildings, roads, bridges, construction" },
+          { value: "E", label: "Chemicals, materials, food/pharma processes" },
+          { value: "F", label: "Biology, environment, healthcare technology" }
+        ]
+      },
+      {
+        id: 16,
+        type: "choice",
+        text: "Which work environment suits him more?",
+        options: [
+          { value: "A", label: "Computer/laptop most of the day" },
+          { value: "B", label: "Electronics lab or embedded systems lab" },
+          { value: "C", label: "Workshop, machine shop, factory floor" },
+          { value: "D", label: "Construction site plus design office" },
+          { value: "E", label: "Chemical/quality/process lab" },
+          { value: "F", label: "Hospital/environment/agri/biotech lab" }
+        ]
+      },
+      {
+        id: 17,
+        type: "choice",
+        text: "Which weekend project would he actually try?",
+        options: [
+          { value: "A", label: "Build a simple circuit or Arduino project" },
+          { value: "B", label: "Make a small website/app/program" },
+          { value: "C", label: "Dismantle/repair a device or machine" },
+          { value: "D", label: "Create a house plan/model or survey layout" },
+          { value: "E", label: "Make/test a chemical/material/food process" },
+          { value: "F", label: "Biology/environment-related experiment" }
+        ]
+      },
+      {
+        id: 18,
+        type: "choice",
+        text: "Which subject caused the least fear in intermediate?",
+        options: [
+          { value: "A", label: "Maths" },
+          { value: "B", label: "Physics" },
+          { value: "C", label: "Chemistry" },
+          { value: "D", label: "Computer Science" },
+          { value: "E", label: "Biology" },
+          { value: "F", label: "None of these" }
+        ]
+      },
+      {
+        id: 19,
+        type: "choice",
+        text: "Which subject was hardest?",
+        options: [
+          { value: "A", label: "Maths" },
+          { value: "B", label: "Physics" },
+          { value: "C", label: "Chemistry" },
+          { value: "D", label: "Computer Science" },
+          { value: "E", label: "Biology" },
+          { value: "F", label: "All were manageable" }
+        ]
+      },
+      {
+        id: 20,
+        type: "choice",
+        text: "Why does he want ECE?",
+        options: [
+          { value: "A", label: "Genuine interest in electronics/circuits/communication" },
+          { value: "B", label: "Good jobs, but I do not know the subjects well" },
+          { value: "C", label: "Family/friends suggested it" },
+          { value: "D", label: "I did not get CSE/IT" },
+          { value: "E", label: "I am still confused" }
+        ]
+      }
+    ];
+
+    const scoreMap = { A: 3, B: 2, C: 1, D: 0 };
+
+    const branchRules = {
+      "CSE/IT": {
+        weights: { 1: 1, 2: 0.8, 5: 2, 6: 2, 11: 0.8, 12: 1.5, 13: 1, 14: 1 },
+        interest: {
+          15: { B: 3 },
+          16: { A: 3 },
+          17: { B: 3 },
+          18: { A: 1, D: 2, F: 0.5 },
+          19: { A: -2, D: -5 },
+          20: { D: 1 }
+        }
+      },
+      "ECE": {
+        weights: { 1: 1, 2: 2, 3: 1.5, 4: 2, 5: 0.8, 8: 1, 12: 1.5, 13: 1, 14: 1.2 },
+        interest: {
+          15: { A: 3 },
+          16: { B: 3 },
+          17: { A: 3 },
+          18: { A: 1, B: 1, D: 0.5, F: 0.5 },
+          19: { A: -5, B: -4 },
+          20: { A: 5, B: 1, C: -1, D: -1, E: -1 }
+        }
+      },
+      "EEE/Electrical": {
+        weights: { 1: 1, 2: 2, 3: 2, 4: 2, 8: 1, 12: 1.5, 13: 1, 14: 1 },
+        interest: {
+          15: { A: 2 },
+          16: { B: 2 },
+          17: { A: 2 },
+          18: { A: 1, B: 1 },
+          19: { A: -5, B: -5 }
+        }
+      },
+      "Mechanical": {
+        weights: { 1: 0.8, 2: 1.2, 3: 2, 7: 1.5, 8: 1.5, 11: 0.6, 12: 1, 14: 1 },
+        interest: {
+          15: { C: 3 },
+          16: { C: 3 },
+          17: { C: 3 },
+          18: { A: 0.5, B: 1 },
+          19: { A: -3, B: -5 }
+        }
+      },
+      "Civil": {
+        weights: { 1: 0.8, 2: 1, 3: 1.5, 7: 2, 8: 1, 11: 1, 12: 1, 14: 1 },
+        interest: {
+          15: { D: 3 },
+          16: { D: 3 },
+          17: { D: 3 },
+          18: { A: 0.5, B: 1 },
+          19: { A: -3, B: -4 }
+        }
+      },
+      "Chemical/Food Tech": {
+        weights: { 1: 0.8, 2: 1, 3: 0.8, 9: 2.5, 11: 1, 12: 1, 14: 1.5 },
+        interest: {
+          15: { E: 3 },
+          16: { E: 3 },
+          17: { E: 3 },
+          18: { C: 2, A: 0.5 },
+          19: { A: -2, C: -5 }
+        }
+      },
+      "Biotech/Biomedical/Environmental": {
+        weights: { 1: 0.5, 2: 0.5, 3: 0.5, 9: 1.5, 10: 2.5, 11: 1.5, 12: 1, 14: 1 },
+        interest: {
+          15: { F: 3 },
+          16: { F: 3 },
+          17: { F: 3 },
+          18: { E: 2, C: 1 },
+          19: { C: -2, E: -5 }
+        }
+      }
+    };
+
+    const qContainer = document.querySelector("#questions");
+    const progressFill = document.querySelector("#progressFill");
+    const progressText = document.querySelector("#progressText");
+    const formStatus = document.querySelector("#formStatus");
+    const resultEl = document.querySelector("#result");
+    const miniResult = document.querySelector("#miniResult");
+    const miniResultText = document.querySelector("#miniResultText");
+    const form = document.querySelector("#surveyForm");
+    const clearBtn = document.querySelector("#clearBtn");
+
+    let latestReport = "";
+    let latestPayload = null;
+
+    function renderQuestions() {
+      qContainer.innerHTML = questions.map((question) => {
+        const options = question.type === "scale" ? scaleOptions : question.options;
+        const optionHtml = options.map((option) => `
+          <label class="option">
+            <input type="radio" name="q${question.id}" value="${option.value}" required>
+            <span><strong>${option.value}.</strong> ${option.label}</span>
+          </label>
+        `).join("");
+
+        return `
+          <fieldset class="question" id="question-${question.id}">
+            <legend><span class="question-meta">${question.id}</span>${question.text}</legend>
+            <div class="options">${optionHtml}</div>
+          </fieldset>
+        `;
+      }).join("");
+    }
+
+    function getAnswers() {
+      const answers = {};
+      questions.forEach((question) => {
+        const selected = form.querySelector(`input[name="q${question.id}"]:checked`);
+        if (selected) answers[question.id] = selected.value;
+      });
+      return answers;
+    }
+
+    function updateProgress() {
+      const answered = Object.keys(getAnswers()).length;
+      const percent = Math.round((answered / questions.length) * 100);
+      progressFill.style.width = `${percent}%`;
+      progressText.textContent = `${answered} of ${questions.length} answered`;
+    }
+
+    function validateAnswers() {
+      const answers = getAnswers();
+      const missing = [];
+      questions.forEach((question) => {
+        const fieldset = document.querySelector(`#question-${question.id}`);
+        const hasAnswer = Boolean(answers[question.id]);
+        fieldset.classList.toggle("missing", !hasAnswer);
+        if (!hasAnswer) missing.push(question.id);
+      });
+      return missing;
+    }
+
+    function qScore(answers, id) {
+      return scoreMap[answers[id]] ?? 0;
+    }
+
+    function interestScore(rule, answers) {
+      let total = 0;
+      Object.entries(rule.interest || {}).forEach(([id, optionScores]) => {
+        const answer = answers[id];
+        if (answer && Object.prototype.hasOwnProperty.call(optionScores, answer)) {
+          total += optionScores[answer];
+        }
+      });
+      return total;
+    }
+
+    function positiveInterestMax(rule) {
+      return Object.values(rule.interest || {}).reduce((sum, optionScores) => {
+        const positives = Object.values(optionScores).filter((value) => value > 0);
+        return sum + (positives.length ? Math.max(...positives) : 0);
+      }, 0);
+    }
+
+    function calculateBranchScores(answers) {
+      return Object.entries(branchRules).map(([name, rule]) => {
+        const weighted = Object.entries(rule.weights).reduce((sum, [id, weight]) => {
+          return sum + qScore(answers, id) * weight;
+        }, 0);
+        const maxWeighted = Object.values(rule.weights).reduce((sum, weight) => sum + weight * 3, 0);
+        const raw = Math.max(0, weighted + interestScore(rule, answers));
+        const max = maxWeighted + positiveInterestMax(rule);
+        const percent = Math.max(0, Math.min(100, Math.round((raw / max) * 100)));
+        return {
+          name,
+          raw: Number(raw.toFixed(2)),
+          max: Number(max.toFixed(2)),
+          percent,
+          level: branchLevel(name, percent, answers)
+        };
+      }).sort((a, b) => b.percent - a.percent);
+    }
+
+    function branchLevel(name, percent, answers) {
+      const blockers = getBranchBlockers(name, answers);
+      if (percent >= 72 && blockers.length === 0) return "Safe";
+      if (percent >= 58 && blockers.length <= 1) return "Manageable";
+      return "Risky";
+    }
+
+    function getBranchBlockers(name, answers) {
+      const blockers = [];
+      const low = (id) => qScore(answers, id) <= 1;
+      const avoid = (id) => answers[id] === "D";
+
+      if (name === "ECE") {
+        if (low(2)) blockers.push("calculus/formula comfort is weak");
+        if (low(4)) blockers.push("electricity/circuits comfort is weak");
+        if (avoid(3)) blockers.push("physics numericals are avoided");
+      }
+      if (name === "EEE/Electrical") {
+        if (low(2)) blockers.push("advanced maths comfort is weak");
+        if (low(3) || low(4)) blockers.push("physics/electrical foundation is weak");
+      }
+      if (name === "CSE/IT") {
+        if (low(5)) blockers.push("logic/problem-solving comfort is weak");
+        if (low(6)) blockers.push("coding interest is weak");
+      }
+      if (name === "Mechanical") {
+        if (low(3)) blockers.push("physics numericals are weak");
+        if (low(7)) blockers.push("visualization/drawing comfort is weak");
+      }
+      if (name === "Civil") {
+        if (low(7)) blockers.push("drawing/spatial comfort is weak");
+        if (low(3)) blockers.push("mechanics/physics base is weak");
+      }
+      if (name === "Chemical/Food Tech") {
+        if (low(9)) blockers.push("chemistry interest is weak");
+      }
+      if (name === "Biotech/Biomedical/Environmental") {
+        if (low(10)) blockers.push("biology/environment interest is weak");
+      }
+      return blockers;
+    }
+
+    function readiness(answers) {
+      const fundamentals = [1, 2, 3, 4].reduce((sum, id) => sum + qScore(answers, id), 0);
+      const habits = [12, 13, 14].reduce((sum, id) => sum + qScore(answers, id), 0);
+      const total = Array.from({ length: 14 }, (_, index) => index + 1)
+        .reduce((sum, id) => sum + qScore(answers, id), 0);
+
+      let level = "Safe";
+      if (total < 18 || habits < 4) level = "Risky";
+      else if (total < 28 || habits < 6 || fundamentals < 7) level = "Manageable";
+
+      return { fundamentals, habits, total, level };
+    }
+
+    function eceVerdict(answers, branchScores) {
+      const ece = branchScores.find((branch) => branch.name === "ECE");
+      const math = qScore(answers, 2);
+      const physics = qScore(answers, 3);
+      const circuits = qScore(answers, 4);
+      const motivation = answers[20];
+
+      if (ece.percent >= 72 && math >= 2 && physics >= 2 && circuits >= 2 && motivation === "A") {
+        return {
+          label: "ECE is possible",
+          detail: "The answers show enough interest and foundation to consider ECE, provided he studies consistently."
+        };
+      }
+
+      if (math <= 1 || physics <= 1 || circuits <= 1) {
+        return {
+          label: "ECE is risky",
+          detail: "ECE will repeatedly use maths, physics numericals, circuits, signals, and communication theory. He should choose it only with a serious bridge plan."
+        };
+      }
+
+      return {
+        label: "ECE is manageable with support",
+        detail: "ECE is not ruled out, but it needs weekly practice in maths, circuits, and physics from the first semester."
+      };
+    }
+
+    function buildNotes(answers, branchScores, ready) {
+      const notes = [];
+      const top = branchScores[0];
+      const ece = branchScores.find((branch) => branch.name === "ECE");
+
+      notes.push({ type: "good", text: `Best-fit branch from this survey: ${top.name} (${top.level}, ${top.percent}%).` });
+
+      if (ready.level === "Risky") {
+        notes.push({ type: "warning", text: "Overall B.Tech passing risk is high unless daily study habits improve before joining." });
+      } else if (ready.level === "Manageable") {
+        notes.push({ type: "warning", text: "B.Tech is manageable, but the first year needs a planned bridge in maths, physics, and study routine." });
+      } else {
+        notes.push({ type: "good", text: "The basic readiness score is strong enough for a regular B.Tech workload." });
+      }
+
+      getBranchBlockers("ECE", answers).forEach((blocker) => {
+        notes.push({ type: "warning", text: `ECE caution: ${blocker}.` });
+      });
+
+      if (answers[20] && answers[20] !== "A") {
+        notes.push({ type: "warning", text: "ECE motivation is not strongly subject-driven, so check the curriculum before finalizing it." });
+      }
+
+      if (ece && ece.percent < 58) {
+        notes.push({ type: "warning", text: "ECE is below the manageable range in this scoring model." });
+      }
+
+      if (qScore(answers, 6) >= 2 && qScore(answers, 5) >= 2) {
+        notes.push({ type: "good", text: "Logic and coding answers are decent; CSE/IT can be considered if he is ready to practice programming." });
+      }
+
+      return notes;
+    }
+
+    function safeClass(level) {
+      return level.toLowerCase();
+    }
+
+    function calculateResult(answers) {
+      const ready = readiness(answers);
+      const branchScores = calculateBranchScores(answers);
+      const ece = eceVerdict(answers, branchScores);
+      const notes = buildNotes(answers, branchScores, ready);
+      const top = branchScores[0];
+      const second = branchScores[1];
+      const recommendation = ready.level === "Risky"
+        ? "Bridge preparation first, then choose the highest-fit B.Tech branch"
+        : top.name;
+
+      return {
+        generatedAt: new Date().toISOString(),
+        readiness: ready,
+        branchScores,
+        ece,
+        notes,
+        recommendation,
+        top,
+        second
+      };
+    }
+
+    function renderResult(result, answers) {
+      const notesHtml = result.notes.map((note) => `<li class="${note.type}">${note.text}</li>`).join("");
+      const branchesHtml = result.branchScores.map((branch) => `
+        <div class="branch-row">
+          <div class="branch-name">${branch.name}</div>
+          <div class="bar" aria-hidden="true"><span style="width: ${branch.percent}%"></span></div>
+          <div class="score">${branch.percent}% ${branch.level}</div>
+        </div>
+      `).join("");
+
+      latestReport = buildReportText(result, answers);
+
+      resultEl.innerHTML = `
+        <div class="result-head">
+          <div class="result-title">
+            <h2>${result.recommendation}</h2>
+            <span class="badge ${safeClass(result.readiness.level)}">${result.readiness.level}</span>
+          </div>
+          <p class="small">${result.ece.label}: ${result.ece.detail}</p>
+        </div>
+
+        <div class="result-grid">
+          <div class="metric">
+            <strong>${result.top.name}</strong>
+            <span>Top branch fit, ${result.top.percent}%</span>
+          </div>
+          <div class="metric">
+            <strong>${result.second.name}</strong>
+            <span>Second option, ${result.second.percent}%</span>
+          </div>
+          <div class="metric">
+            <strong>${result.readiness.total}/42</strong>
+            <span>Core readiness score</span>
+          </div>
+        </div>
+
+        <div>
+          <h3>Branch Scores</h3>
+          <div class="branch-list">${branchesHtml}</div>
+        </div>
+
+        <div>
+          <h3>Assessment Notes</h3>
+          <ul class="notes">${notesHtml}</ul>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="button" id="copyReportBtn">Copy report</button>
+          <button class="btn btn-secondary" type="button" id="shareReportBtn">Share report</button>
+          <a class="btn btn-secondary" id="mailReportBtn" href="#">Email report</a>
+          <a class="btn btn-secondary" id="waReportBtn" href="#" target="_blank" rel="noopener">WhatsApp report</a>
+          <button class="btn btn-secondary" type="button" id="downloadJsonBtn">Download JSON</button>
+        </div>
+
+        <pre class="raw">${escapeHtml(latestReport)}</pre>
+      `;
+
+      resultEl.classList.add("visible");
+      miniResult.classList.remove("hidden");
+      miniResultText.textContent = `${result.recommendation}. ECE verdict: ${result.ece.label}.`;
+      wireResultActions();
+      resultEl.scrollIntoView({ block: "start", behavior: "smooth" });
+    }
+
+    function wireResultActions() {
+      const copyBtn = document.querySelector("#copyReportBtn");
+      const shareBtn = document.querySelector("#shareReportBtn");
+      const mailBtn = document.querySelector("#mailReportBtn");
+      const waBtn = document.querySelector("#waReportBtn");
+      const downloadBtn = document.querySelector("#downloadJsonBtn");
+
+      copyBtn.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(latestReport);
+        setStatus("Report copied.", "ok");
+      });
+
+      shareBtn.addEventListener("click", async () => {
+        if (navigator.share) {
+          await navigator.share({ title: "B.Tech Branch Fit Survey", text: latestReport });
+          return;
+        }
+        await navigator.clipboard.writeText(latestReport);
+        setStatus("Sharing is not available here, so the report was copied.", "ok");
+      });
+
+      const subject = encodeURIComponent("B.Tech Branch Fit Survey Result");
+      const body = encodeURIComponent(latestReport);
+      mailBtn.href = `mailto:${CONFIG.ownerEmail}?subject=${subject}&body=${body}`;
+
+      const whatsappTarget = CONFIG.ownerWhatsApp ? `https://wa.me/${CONFIG.ownerWhatsApp}` : "https://wa.me/";
+      waBtn.href = `${whatsappTarget}?text=${body}`;
+
+      downloadBtn.addEventListener("click", () => {
+        const blob = new Blob([JSON.stringify(latestPayload, null, 2)], { type: "application/json" });
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "btech-branch-survey-result.json";
+        link.click();
+        URL.revokeObjectURL(link.href);
+      });
+    }
+
+    function setStatus(message, type = "error") {
+      formStatus.textContent = message;
+      formStatus.style.color = type === "ok" ? "var(--accent-strong)" : "var(--red)";
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function answerLabel(id, value) {
+      const question = questions.find((item) => item.id === Number(id));
+      const options = question.type === "scale" ? scaleOptions : question.options;
+      const option = options.find((item) => item.value === value);
+      return option ? option.label : value;
+    }
+
+    function buildReportText(result, answers) {
+      const name = document.querySelector("#studentName").value.trim() || "Not provided";
+      const contact = document.querySelector("#studentContact").value.trim() || "Not provided";
+      const branchLines = result.branchScores
+        .map((branch) => `- ${branch.name}: ${branch.percent}% (${branch.level})`)
+        .join("\n");
+      const noteLines = result.notes.map((note) => `- ${note.text}`).join("\n");
+      const answerLines = Object.entries(answers)
+        .map(([id, value]) => `${id}. ${value} - ${answerLabel(id, value)}`)
+        .join("\n");
+
+      return [
+        "B.Tech Branch Fit Survey Result",
+        `Generated: ${new Date(result.generatedAt).toLocaleString()}`,
+        `Student: ${name}`,
+        `Contact: ${contact}`,
+        "",
+        `Recommendation: ${result.recommendation}`,
+        `Overall readiness: ${result.readiness.level} (${result.readiness.total}/42)`,
+        `ECE verdict: ${result.ece.label}`,
+        result.ece.detail,
+        "",
+        "Branch scores:",
+        branchLines,
+        "",
+        "Assessment notes:",
+        noteLines,
+        "",
+        "Selected answers:",
+        answerLines
+      ].join("\n");
+    }
+
+    async function submitResponse(payload) {
+      localStorage.setItem("btechBranchSurveyLastResponse", JSON.stringify(payload));
+
+      if (!CONFIG.responseEndpoint) {
+        setStatus("Result generated. Response capture is not linked yet.", "ok");
+        return;
+      }
+
+      try {
+        const mode = CONFIG.responseMode === "cors" ? "cors" : "no-cors";
+        const headers = mode === "cors"
+          ? { "Content-Type": "application/json" }
+          : { "Content-Type": "text/plain;charset=utf-8" };
+
+        await fetch(CONFIG.responseEndpoint, {
+          method: "POST",
+          mode,
+          headers,
+          body: JSON.stringify(payload)
+        });
+        setStatus("Result generated and response sent.", "ok");
+      } catch (error) {
+        setStatus("Result generated, but response sending failed. Use Copy report.", "error");
+      }
+    }
+
+    form.addEventListener("change", updateProgress);
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const missing = validateAnswers();
+      updateProgress();
+
+      if (missing.length) {
+        setStatus(`Please answer ${missing.length} remaining question${missing.length === 1 ? "" : "s"}.`);
+        document.querySelector(`#question-${missing[0]}`).scrollIntoView({ block: "center", behavior: "smooth" });
+        return;
+      }
+
+      const answers = getAnswers();
+      const result = calculateResult(answers);
+      const payload = {
+        studentName: document.querySelector("#studentName").value.trim(),
+        studentContact: document.querySelector("#studentContact").value.trim(),
+        answers,
+        result
+      };
+      latestPayload = payload;
+      renderResult(result, answers);
+      await submitResponse(payload);
+    });
+
+    clearBtn.addEventListener("click", () => {
+      form.reset();
+      document.querySelectorAll("fieldset.question").forEach((fieldset) => fieldset.classList.remove("missing"));
+      resultEl.classList.remove("visible");
+      resultEl.innerHTML = "";
+      miniResult.classList.add("hidden");
+      setStatus("", "ok");
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    renderQuestions();
+    updateProgress();
+  </script>
+</body>
+</html>
