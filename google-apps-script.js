@@ -1,10 +1,16 @@
-const SHEET_ID = "PASTE_GOOGLE_SHEET_ID_HERE";
+const SHEET_ID = "";
 const SHEET_NAME = "Responses";
 const NOTIFY_EMAIL = "";
+const AUTO_CREATE_SPREADSHEET_NAME = "B.Tech Branch Fit Survey Responses";
 
 function doGet() {
+  const sheet = getSheet_();
   return ContentService
-    .createTextOutput(JSON.stringify({ ok: true, message: "B.Tech survey response endpoint is running." }))
+    .createTextOutput(JSON.stringify({
+      ok: true,
+      message: "B.Tech survey response endpoint is running.",
+      spreadsheetUrl: sheet.getParent().getUrl()
+    }))
     .setMimeType(ContentService.MimeType.JSON);
 }
 
@@ -69,12 +75,26 @@ function doPost(e) {
 }
 
 function getSheet_() {
-  const spreadsheet = SpreadsheetApp.openById(SHEET_ID);
+  const spreadsheet = SHEET_ID
+    ? SpreadsheetApp.openById(SHEET_ID)
+    : getOrCreateSpreadsheet_();
   let sheet = spreadsheet.getSheetByName(SHEET_NAME);
   if (!sheet) {
     sheet = spreadsheet.insertSheet(SHEET_NAME);
   }
   return sheet;
+}
+
+function getOrCreateSpreadsheet_() {
+  const properties = PropertiesService.getScriptProperties();
+  let spreadsheetId = properties.getProperty("SPREADSHEET_ID");
+  if (spreadsheetId) {
+    return SpreadsheetApp.openById(spreadsheetId);
+  }
+
+  const spreadsheet = SpreadsheetApp.create(AUTO_CREATE_SPREADSHEET_NAME);
+  properties.setProperty("SPREADSHEET_ID", spreadsheet.getId());
+  return spreadsheet;
 }
 
 function ensureHeaders_(sheet) {

@@ -15,18 +15,15 @@ For a mobile link, upload `index.html` to any static host such as GitHub Pages, 
 
 ## Automatic Google Sheets Capture
 
-1. Create a blank Google Sheet.
-2. Copy the Sheet ID from its URL.
-3. In Google Sheets, go to `Extensions > Apps Script`.
-4. Paste the contents of `google-apps-script.js`.
-5. Replace `PASTE_GOOGLE_SHEET_ID_HERE` with your Sheet ID.
-6. Optional: set `NOTIFY_EMAIL` to your email address.
-7. Click `Deploy > New deployment`.
-8. Choose `Web app`.
-9. Set `Execute as` to `Me`.
-10. Set access to `Anyone`.
-11. Deploy and copy the Web App URL.
-12. Open `index.html`, find this config near the bottom, and paste the Web App URL:
+1. Go to <https://script.new>.
+2. Paste the contents of `google-apps-script.js`.
+3. Optional: set `NOTIFY_EMAIL` to your email address.
+4. Click `Deploy > New deployment`.
+5. Choose `Web app`.
+6. Set `Execute as` to `Me`.
+7. Set access to `Anyone`.
+8. Deploy and copy the Web App URL.
+9. Open `index.html`, find this config near the bottom, and paste the Web App URL:
 
 ```js
 const CONFIG = {
@@ -37,7 +34,9 @@ const CONFIG = {
 };
 ```
 
-After that, every submitted survey will append a row to the Google Sheet. The student still sees feedback immediately on the phone.
+After that, every submitted survey will append a row to a Google Sheet named `B.Tech Branch Fit Survey Responses` in your Google Drive. The student still sees feedback immediately on the phone.
+
+To confirm the endpoint is working, open the Web App URL in a browser. It will show a JSON response that includes the spreadsheet URL.
 
 ## Optional Share Targets
 
